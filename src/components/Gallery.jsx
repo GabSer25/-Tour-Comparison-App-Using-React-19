@@ -8,7 +8,7 @@ function Gallery({ tours, setTours, onRemove }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  // Fetch tours on component mount
+  // Fetch Tours on Component Mount
   useEffect(() => {
     const fetchTours = async () => {
       try {
@@ -24,7 +24,7 @@ function Gallery({ tours, setTours, onRemove }) {
     };
     fetchTours();
   }, [setTours]);
-
+  // Handle Loading and Error States
   if (loading) return <h2>Loading...</h2>;
   if (error) return <h2>Error fetching tours. Try again later.</h2>;
 
