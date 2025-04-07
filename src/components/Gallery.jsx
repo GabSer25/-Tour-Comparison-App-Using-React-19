@@ -2,11 +2,12 @@
 import { useEffect, useState } from 'react';
 import TourCard from './TourCard';
 
-const url = 'https://course-api.com/react-tours-project';
+// Using a CORS Proxy to Avoid Local Fetch Issues
+const url = 'https://api.allorigins.win/raw?url=https://course-api.com/react-tours-project';
 
 function Gallery({ tours, setTours, onRemove }) {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true); // Tracks Loading State
+  const [error, setError] = useState(false); // Tracks Error State
 
   // Fetch Tours on Component Mount
   useEffect(() => {
@@ -22,12 +23,14 @@ function Gallery({ tours, setTours, onRemove }) {
         setLoading(false);
       }
     };
-    fetchTours();
-  }, [setTours]);
+    fetchTours(); // Triggers Fetch on Mount
+  }, []);
+
   // Handle Loading and Error States
   if (loading) return <h2>Loading...</h2>;
   if (error) return <h2>Error fetching tours. Try again later.</h2>;
 
+  // Renders the List of Tour Cards
   return (
     <section className="gallery">
       {tours.map(tour => (

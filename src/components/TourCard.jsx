@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 function TourCard({ id, name, info, price, image, onRemove }) {
-  const [readMore, setReadMore] = useState(false);
+  const [readMore, setReadMore] = useState(false); // Controls "Read More" Toggle
 
   return (
     <article className="tour-card">
